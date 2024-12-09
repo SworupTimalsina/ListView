@@ -1,4 +1,7 @@
+
 import 'package:flutter/material.dart';
+import 'package:listview_class/core/common/my_card.dart';
+import 'package:listview_class/core/common/my_snackbar.dart';
 
 class CardView extends StatelessWidget {
   const CardView({super.key});
@@ -11,9 +14,15 @@ class CardView extends StatelessWidget {
           child: Column(
             children: [
               for (int i = 1; i < 10; i++) ...{
-                MyCard(
-                  title: 'Card $i',
-                  isEven: i % 2 == 0, 
+                GestureDetector(
+                  onTap: () {
+                    showMySnackBar(
+                        context: context, message: 'You pressed on Card $i');
+                  },
+                  child: MyCard(
+                    title: 'Card $i',
+                    color: i.isEven ? Colors.blue : Colors.amber,
+                  ),
                 )
               }
             ],
@@ -23,29 +32,3 @@ class CardView extends StatelessWidget {
     );
   }
 }
-
-class MyCard extends StatelessWidget {
-  const MyCard({super.key, required this.title, required this.isEven});
-
-  final String title;
-  final bool isEven;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      width: double.infinity,
-      child: Card(
-        elevation: 5,
-        color: isEven ? Colors.blue : Colors.amber,
-        child: Center(
-          child: Text(
-            title,
-            style: const TextStyle(fontSize: 30, color: Colors.white),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
