@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:listview_class/view/calculator_view.dart';
 import 'package:listview_class/view/card_view.dart';
 import 'package:listview_class/view/student_details_view.dart';
 import 'package:listview_class/view/student_output_view.dart';
@@ -10,7 +11,7 @@ void main() {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => const CardView(),
+        '/': (context) => const CalculatorView(),
         '/output': (context) => const StudentOutputView(),
         '/details': (context) => const StudentSingleDetailView(),
       },
